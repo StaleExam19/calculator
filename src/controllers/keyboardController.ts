@@ -1,18 +1,11 @@
 import * as calcDisplayState from "../states/calculatorDisplayState";
 import { possibleInput, operators } from "../states/constants";
 import * as resultState from "../states/resultState";
+
+import { calcInput, resultDisplay, buttons } from "../services/elements";
 import { evaluate } from "../services/evaluate";
 
-import { calcInput, resultDisplay } from "../services/elements";
-
-// import calculate from "../services/calculate";
-
-function parse(str: string) {
-    return Function(`'use strict'; return (${str})`)()
-}
-  
 export default function keyboardController() {
-
     document.addEventListener("keydown", evt => {
         let currentState = calcDisplayState.getState();
 
@@ -20,22 +13,46 @@ export default function keyboardController() {
             calcDisplayState.setState(currentState += evt.key);
 
 
-            if (!operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1])) {
-                resultState.setState(evaluate(calcDisplayState.getState()));
-            }
+            if (!operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1]))
+                resultState.setState(
+                    evaluate(calcDisplayState.getState()));
 
             resultDisplay!.innerHTML = resultState.getState().toString();
         }
-
+        
         if (evt.key === "Backspace") {
             calcDisplayState.setState(currentState.replace(/.$/, ""));
-            if (!operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1])) {
-                resultState.setState(evaluate(calcDisplayState.getState()));
-            }
-            resultDisplay!.innerHTML = resultState.getState() ? resultState.getState().toString() : "";
+
+            if (operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1]))
+                resultState.setState(
+                    evaluate(calcDisplayState.getState().replace(/.$/, "")));
+            else
+                resultState.setState(
+                    evaluate(calcDisplayState.getState()));
+
+            resultDisplay!.innerHTML = resultState.getState() ? 
+                resultState.getState().toString() : "";
         }
-        
-        
+
+
         calcInput!.innerHTML = calcDisplayState.getState();
     });
+
+
+
+    document.addEventListener("keydown", evt => {
+        buttons.forEach(val => {
+            if (val.getAttribute("data-value") == evt.key) {
+                val.classList.add("bg-zinc-800");
+            }
+        });
+    });
+
+    document.addEventListener("keyup", evt => {
+        buttons.forEach(val => {
+            if (val.getAttribute("data-value") == evt.key) {
+                val.classList.remove("bg-zinc-800");
+            }
+        });
+    })
 }
