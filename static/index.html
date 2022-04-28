@@ -14,12 +14,137 @@
         <div id="calculator" class="h-[500px] w-[550px] rounded flex flex-col gap-2">
 
             <!-- display container -->
-            <div class="border-b-2 flex h-[70px] border-zinc-800  items-center">
+            <div class="border-b-[1px] flex flex-col h-[70px] border-zinc-800  justify-center">
+                <div class="flex-1 text-right" id="calculation-result"></div>
                 <div class="flex-1 outline-none text-4xl text-right" id="calculator-input"></div>
             </div>
 
             <!-- button container -->
             <div class="flex-1 grid grid-cols-4 grid-rows-5" id="calculator-buttons">
+
+                <!--  -->
+
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="C">
+                    C </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="CE">
+                    CE </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="⌫">
+                    ⌫ </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="-">
+                    - </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="7">
+                    7 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="8">
+                    8 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="9">
+                    9 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="+">
+                    + </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="4">
+                    4 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="5">
+                    5 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="6">
+                    6 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="*">
+                    * </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="1">
+                    1 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="2">
+                    2 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="3">
+                    3 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="/">
+                    / </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value=".">
+                    . </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="0">
+                    0 </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value=".">
+                    . </button>
+                    </div>
+                
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="=">
+                    = </button>
+                    </div>
+                 
             </div>
         </div>
     </div>

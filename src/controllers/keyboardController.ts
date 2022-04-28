@@ -1,38 +1,41 @@
 import * as calcDisplayState from "../states/calculatorDisplayState";
 import { possibleInput, operators } from "../states/constants";
 import * as resultState from "../states/resultState";
-import * as firstNum from "../states/firstNum";
-import * as secondNum from "../states/secondNum";
+import { evaluate } from "../services/evaluate";
 
-import { calcInput } from "../services/elements";
-import calculate from "../services/calculate";
+import { calcInput, resultDisplay } from "../services/elements";
 
-type Operation = "+" | "-" | "/" | "*";
+// import calculate from "../services/calculate";
 
-
+function parse(str: string) {
+    return Function(`'use strict'; return (${str})`)()
+}
+  
 export default function keyboardController() {
-    let isFirst = true;
-    let operator: Operation;
 
     document.addEventListener("keydown", evt => {
         let currentState = calcDisplayState.getState();
 
         if (possibleInput.includes(evt.key)) {
-            let first = firstNum.getState();
-            let second = secondNum.getState();
-
             calcDisplayState.setState(currentState += evt.key);
 
-            if (isFirst && !operators.includes(evt.key))
-                firstNum.setState(first += evt.key);
-            else if (!isFirst && !operators.includes(evt.key))
-                secondNum.setState(second += evt.key);
 
-            calcInput!.innerHTML = calcDisplayState.getState();
+            if (!operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1])) {
+                resultState.setState(evaluate(calcDisplayState.getState()));
+            }
+
+            resultDisplay!.innerHTML = resultState.getState().toString();
         }
 
-        if (evt.key === "Backspace")
+        if (evt.key === "Backspace") {
             calcDisplayState.setState(currentState.replace(/.$/, ""));
-
+            if (!operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1])) {
+                resultState.setState(evaluate(calcDisplayState.getState()));
+            }
+            resultDisplay!.innerHTML = resultState.getState() ? resultState.getState().toString() : "";
+        }
+        
+        
+        calcInput!.innerHTML = calcDisplayState.getState();
     });
 }

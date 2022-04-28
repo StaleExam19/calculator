@@ -18,12 +18,10 @@ export default function createCalculator() {
         const button = document.createElement("button");
         button.innerHTML = btnLayout[i];
 
-
-
         button.addEventListener("focus", evt => (<HTMLElement>evt.currentTarget).blur())
 
         button.className =
-            "py-[1rem] px-[3rem] border-2 border-zinc-800 rounded " +
+            "py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded " +
             "transition-all hover:bg-zinc-800 outline-none";
 
         (<DataSet & DOMStringMap>button.dataset).value = btnLayout[i];

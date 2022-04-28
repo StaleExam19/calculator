@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Calculator</title>
+</head>
+
+<% const btnLayout = [
+"C", "CE", `⌫`, "-",
+"7", "8", "9", "+",
+"4", "5", "6", "*",
+"1", "2", "3", "/",
+".", "0", ".", "="
+]; %> 
+
+<body class="text-zinc-400 bg-zinc-900 text-[1rem]">
+    <div class="w-4/5 mx-auto h-screen flex items-center justify-center">
+        <div id="calculator" class="h-[500px] w-[550px] rounded flex flex-col gap-2">
+
+            <!-- display container -->
+            <div class="border-b-[1px] flex flex-col h-[70px] border-zinc-800  justify-center">
+                <div class="flex-1 text-right" id="calculation-result"></div>
+                <div class="flex-1 outline-none text-4xl text-right" id="calculator-input"></div>
+            </div>
+
+            <!-- button container -->
+            <div class="flex-1 grid grid-cols-4 grid-rows-5" id="calculator-buttons">
+
+                <!--  -->
+
+                <% for (let i = 0; i < btnLayout.length; i++) { %>
+                    <div class="flex justify-center items-center">
+                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                        transition-all hover:bg-zinc-800 outline-none" data-value="<%=btnLayout[i]%>">
+                    <%= btnLayout[i] %> </button>
+                    </div>
+                <% } %> 
+            </div>
+        </div>
+    </div>
+    <script defer type="module" src="./scripts/index.js"></script>
+</body>
+
+</html>

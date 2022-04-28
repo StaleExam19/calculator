@@ -4,7 +4,7 @@ import buttonController from "./controllers/buttonController";
 
 
 document.addEventListener("DOMContentLoaded", evt => {
-    createCalculator();
+    // createCalculator();
     keyboardController();
     buttonController();
 });
