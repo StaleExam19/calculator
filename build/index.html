@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Calculator</title>
+</head>
+
+<body class="text-zinc-400 bg-zinc-900 text-[1rem]">
+    <div class="w-4/5 mx-auto h-screen flex items-center justify-center">
+        <div id="calculator" class="h-[500px] w-[550px] rounded flex flex-col gap-2">
+
+            <!-- display container -->
+            <div class="border-b-2 flex h-[70px] border-zinc-800  items-center">
+                <div class="flex-1 outline-none text-4xl text-right" id="calculator-input"></div>
+            </div>
+
+            <!-- button container -->
+            <div class="flex-1 grid grid-cols-4 grid-rows-5" id="calculator-buttons">
+            </div>
+        </div>
+    </div>
+    <script defer="" type="module" src="./scripts/index.js"></script>
+
+
+</body></html>
