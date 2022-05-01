@@ -11,16 +11,16 @@
 </head>
 
 <% const btnLayout = [
-"C", "CE", `⌫`, "-",
+"C", `⌫`, "-",
 "7", "8", "9", "+",
 "4", "5", "6", "*",
 "1", "2", "3", "/",
-".", "0", ".", "="
+".", "0", "="
 ]; %> 
 
 <body class="text-zinc-400 bg-zinc-900 text-[1rem]">
     <div class="w-4/5 mx-auto h-screen flex items-center justify-center">
-        <div id="calculator" class="h-[500px] w-[550px] rounded flex flex-col gap-2">
+        <div id="calculator" class="h-[450px] w-[550px] rounded flex flex-col gap-2">
 
             <!-- display container -->
             <div class="border-b-[1px] flex flex-col h-[70px] border-zinc-800  justify-center">
@@ -31,11 +31,9 @@
             <!-- button container -->
             <div class="flex-1 grid grid-cols-4 grid-rows-5" id="calculator-buttons">
 
-                <!--  -->
-
                 <% for (let i = 0; i < btnLayout.length; i++) { %>
-                    <div class="flex justify-center items-center">
-                        <button class="py-[1rem] px-[3rem] border-[1px] border-zinc-800 rounded 
+                    <div class="flex justify-center items-center  <%= i == 0 || i == btnLayout.length - 1 ? "col-span-2" : ""%> ">
+                        <button class="py-[1rem] px-[3rem] border-[1px] w-11/12 border-zinc-800 rounded 
                         transition-all hover:bg-zinc-800 outline-none" data-value="<%=btnLayout[i]%>">
                     <%= btnLayout[i] %> </button>
                     </div>
