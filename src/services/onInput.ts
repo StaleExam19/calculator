@@ -12,21 +12,26 @@ import { calcInput } from "../services/elements";
 export default function onInput(key: any) {
     let currentState = calcDisplayState.getState();
 
-    if (calcDisplayState.getState().startsWith("0"))
+    if (operators.includes(currentState[calcDisplayState.getState().length - 1]) && operators.includes(key)) {
+        calcDisplayState.setState(currentState.replace(/.$/, key));
+    }
+
+    else if (calcDisplayState.getState().startsWith("0"))
         calcDisplayState.setState(key);
-    else 
+
+    else
         calcDisplayState.setState(currentState += key);
 
     if (!operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1]))
         resultState.setState(
             evaluate(calcDisplayState.getState()));
 
-
     if (operators.includes(key))
-            currentOperator.setState(key);
+        currentOperator.setState(key);
 
-        resultDisplay!.innerHTML = resultState.getState().toString();
-        calcInput!.innerHTML = calcDisplayState.getState();
+    resultDisplay!.innerHTML = resultState.getState().toString();
+    calcInput!.innerHTML = calcDisplayState.getState();
+
 
 
     if (key == "0" && currentOperator.getState() == "/") {
