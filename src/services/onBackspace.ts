@@ -11,6 +11,10 @@ export default function onBackspace() {
 
     calcDisplayState.setState(currentState.replace(/.$/, ""));
 
+
+    if (calcDisplayState.getState() == "")
+        calcDisplayState.setState("0");
+
     if (operators.includes(calcDisplayState.getState()[calcDisplayState.getState().length - 1]))
         resultState.setState(
             evaluate(calcDisplayState.getState().replace(/.$/, "")));
@@ -22,5 +26,4 @@ export default function onBackspace() {
         resultState.getState().toString() : "";
 
     calcInput!.innerHTML = calcDisplayState.getState();
-
 }

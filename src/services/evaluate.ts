@@ -1,2 +1,4 @@
-export const evaluate = (expression: string) => Function(`'use strict'; 
-return ${expression}`)();
+export const evaluate = (expression: string) => {
+    return Function(`'use strict'; 
+            return ${expression}`)();
+};
